@@ -1,10 +1,10 @@
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: "./src/index.tsx", // 项目的入口文件
   output: {
-    filename: "index.jsx", // 编译后的文件名
+    filename: "index.js", // 编译后的文件名
     path: path.resolve(__dirname, "public"), // 编译后的文件路径
     module: true,
     libraryTarget: "module",

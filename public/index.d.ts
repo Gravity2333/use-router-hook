@@ -5,10 +5,9 @@ import type { IUseRouterHistory, IUseRouterProps, IUseRouterTo } from "./typings
  * @param IUseRouterProps
  * @returns [IUseRouterHistory,OutLet组件]
  */
-declare function useRouter({ routes, callbacks, initialPath, NotFoundPage, }: IUseRouterProps & {
+export declare function useRouter({ routes, callbacks, initialPath, NotFoundPage, }: IUseRouterProps & {
     initialPath?: IUseRouterTo;
     NotFoundPage?: (props: {
         back: () => void;
     }) => JSX.Element;
 }): [IUseRouterHistory, () => JSX.Element];
-export default useRouter;

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import React,{ useEffect, useMemo, useRef, useState } from "react";
 import type {
   IRouterUpdate,
   IUseRouterHistory,
@@ -7,7 +7,7 @@ import type {
   IUseRouterTo,
 } from "./typings";
 import { createUseRouterHistory } from "./utils/history";
-import React from "react";
+import { ReactDOM } from "react";
 
 function NotFoundPageDefaultElem({ back }: { back: () => void }) {
   return (
@@ -24,7 +24,7 @@ function NotFoundPageDefaultElem({ back }: { back: () => void }) {
  * @returns [IUseRouterHistory,OutLet组件]
  */
 
-function useRouter({
+export function useRouter({
   routes,
   callbacks = [],
   initialPath,
@@ -118,5 +118,3 @@ function useRouter({
     () => JSX.Element
   ];
 }
-
-export default useRouter;
