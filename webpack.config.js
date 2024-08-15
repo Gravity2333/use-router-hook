@@ -1,7 +1,7 @@
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: "./src/index.tsx", // 项目的入口文件
   output: {
     filename: "index.js", // 编译后的文件名
@@ -17,7 +17,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/, // 匹配 TypeScript 文件
-        use: "ts-loader", // 使用 ts-loader 来处理 TypeScript 文件
+        use: ["babel-loader","ts-loader"], // 使用 ts-loader 来处理 TypeScript 文件
         exclude: /node_modules/, // 排除 node_modules 目录
       },
     ],
