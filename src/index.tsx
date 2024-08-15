@@ -24,7 +24,7 @@ function NotFoundPageDefaultElem({ back }: { back: () => void }) {
  * @returns [IUseRouterHistory,OutLet组件]
  */
 
-export function useRouter({
+export default function useRouter({
   routes,
   callbacks = [],
   initialPath,
