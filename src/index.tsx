@@ -1,4 +1,4 @@
-import React,{ useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   IRouterUpdate,
   IUseRouterHistory,
@@ -7,7 +7,7 @@ import type {
   IUseRouterTo,
 } from "./typings";
 import { createUseRouterHistory } from "./utils/history";
-import { ReactDOM } from "react";
+import * as React from 'react';
 
 function NotFoundPageDefaultElem({ back }: { back: () => void }) {
   return (
