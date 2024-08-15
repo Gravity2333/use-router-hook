@@ -22,6 +22,10 @@ module.exports = {
       },
     ],
   },
+  externals: {
+    react: "react",
+    "react-dom": "react-dom",
+  },
   resolve: {
     extensions: [".tsx", ".ts", ".js"], // 自动解析的文件扩展名
   },
