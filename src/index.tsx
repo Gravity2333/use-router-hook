@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
   IRouterUpdate,
   IUseRouterHistory,
@@ -7,7 +7,7 @@ import type {
   IUseRouterTo,
 } from "./typings";
 import { createUseRouterHistory } from "./utils/history";
-import * as React from 'react';
+import * as React from "react";
 
 function NotFoundPageDefaultElem({ back }: { back: () => void }) {
   return (
@@ -55,29 +55,32 @@ export default function useRouter({
     return MatchedRoute.component;
   }, [MatchedRoute]);
 
-  function OutLet() {
-    const MatchedRouteComponent =
-      MatchedComponent ||
-      (() => (
-        <NotFoundPage
-          back={() => {
-            routerHistory.current?.push("/");
+  const OutLet = useCallback(
+    function OutLet() {
+      const MatchedRouteComponent =
+        MatchedComponent ||
+        (() => (
+          <NotFoundPage
+            back={() => {
+              routerHistory.current?.push("/");
+            }}
+          />
+        ));
+      return (
+        <MatchedRouteComponent
+          history={routerHistory.current}
+          location={{
+            ...(routerHistory.current?.location || {}),
+            state: {
+              ...(MatchedRoute?.initialState || {}),
+              ...(routerHistory.current?.location?.state || {}),
+            },
           }}
         />
-      ));
-    return (
-      <MatchedRouteComponent
-        history={routerHistory.current}
-        location={{
-          ...(routerHistory.current?.location || {}),
-          state: {
-            ...(MatchedRoute?.initialState || {}),
-            ...(routerHistory.current?.location?.state || {}),
-          },
-        }}
-      />
-    );
-  }
+      );
+    },
+    [MatchedComponent, MatchedRoute?.initialState]
+  );
 
   useEffect(() => {
     /** 初始化操作 */
