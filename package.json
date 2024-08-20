@@ -1,6 +1,6 @@
 {
   "name": "use-router-hook",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "a react hook that provide a sample frontend router system",
   "main": "public/index.js",
   "scripts": {
